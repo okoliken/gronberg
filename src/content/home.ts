@@ -45,28 +45,28 @@ export const latestWork = [
   {
     slug: "dancing-in-black-and-white",
     title: { text: "Dancing in\nBlack &", accent: "White" },
-    image: { src: "/images/ballet-tutu.jpg", alt: "Male dancer in a white tutu, arms raised against a wall" },
+    image: { src: "/images/work-dancing.jpg", alt: "Male dancer in a white tutu, arms raised against a wall" },
     place: "New York",
     date: "October 2021",
   },
   {
     slug: "style-and-fashion",
     title: { text: "Style", accent: "& Fashion" },
-    image: { src: "/images/hoodie-chair.jpg", alt: "Man in a puffer hoodie sitting on a school chair" },
+    image: { src: "/images/work-style-fashion.jpg", alt: "Man in a puffer hoodie sitting on a school chair" },
     place: "New York",
     date: "October 2021",
   },
   {
     slug: "one-eye",
     title: { text: "One", accent: "Eye" },
-    image: { src: "/images/hands-face.jpg", alt: "Man covering his face with both hands, one eye visible" },
+    image: { src: "/images/work-one-eye.jpg", alt: "Man covering his face with both hands, one eye visible" },
     place: "New York",
     date: "October 2021",
   },
   {
     slug: "week-fashion",
     title: { text: "WEek", accent: "Fashion" },
-    image: { src: "/images/arms-crossed.jpg", alt: "Woman with a dark bob turned away, arms crossed" },
+    image: { src: "/images/work-week-fashion.jpg", alt: "Woman with a dark bob turned away, arms crossed" },
     place: "New York",
     date: "October 2021",
   },
@@ -80,7 +80,7 @@ export const exhibitions = [
     body: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
     month: "Jun",
     day: "16",
-    image: { src: "/images/coat-back.jpg", alt: "Woman in a checked coat seen from behind", position: "50% 20%" },
+    image: { src: "/images/ex-independent-beauty.jpg", alt: "Woman in a checked coat seen from behind" },
   },
   {
     slug: "in-humanity-we-trust",
@@ -89,7 +89,7 @@ export const exhibitions = [
     body: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.",
     month: "Mar",
     day: "02",
-    image: { src: "/images/sweater-chair.jpg", alt: "Woman in a white sweater seated on a stool", position: "50% 50%" },
+    image: { src: "/images/ex-in-humanity.jpg", alt: "Woman in a white sweater seated on a stool" },
   },
   {
     slug: "berlin-at-night",
@@ -98,7 +98,7 @@ export const exhibitions = [
     body: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.",
     month: "Feb",
     day: "01",
-    image: { src: "/images/curly-cigarette-sm.jpg", alt: "Curly-haired man resting his head on his hand", position: "50% 50%" },
+    image: { src: "/images/ex-berlin-at-night.jpg", alt: "Curly-haired man resting his head on his hand" },
   },
 ];
 

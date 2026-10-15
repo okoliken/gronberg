@@ -101,7 +101,7 @@ export function Loader() {
         className="fixed top-1/2 left-1/2 h-220 w-180 overflow-hidden [clip-path:inset(50%_0%_50%_0%)] lg:h-280 lg:w-230"
       >
         {loaderFrames.map((src, i) => (
-          <div key={src} data-shot className={`absolute inset-x-0 -inset-y-[6%] ${i === 0 ? "" : "invisible opacity-0"}`}>
+          <div key={src} data-shot className={`absolute inset-0 ${i === 0 ? "" : "invisible opacity-0"}`}>
             <Image src={src} alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" priority={i < 2} className="object-cover" />
           </div>
         ))}

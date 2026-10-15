@@ -89,7 +89,6 @@ export function Hero() {
           sizes="(min-width: 64rem) 45vw, 100vw"
           priority
           reveal={false}
-          parallax={false}
           className="aspect-[751.5/918] w-full lg:w-751.5"
         />
       </div>
@@ -98,11 +97,10 @@ export function Hero() {
         <figure className="lg:absolute lg:top-896 lg:left-59">
           <div data-hero-thumb>
             <RevealImage
-              src="/images/curly-cigarette.jpg"
+              src="/images/hero-portrait.jpg"
               alt="Portrait of Jacob Grønberg"
               sizes="180px"
               reveal={false}
-              parallax={false}
               className="size-120 lg:size-180"
             />
           </div>

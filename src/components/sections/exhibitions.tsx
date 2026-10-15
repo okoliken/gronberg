@@ -32,8 +32,6 @@ export function Exhibitions() {
                     src={ex.image.src}
                     alt=""
                     sizes="(min-width: 64rem) 14vw, 100px"
-                    position={ex.image.position}
-                    parallax={false}
                     className="size-full"
                   />
                 </Link>
