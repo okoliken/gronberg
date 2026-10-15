@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/*
+  One spacing unit = one Figma pixel.
+  Desktop (>= lg): the 1680px frame scales with the viewport, capped at 1:1.
+  Mobile: a 390px reference width, capped so tablets don't balloon.
+  So `px-140` on desktop is exactly the Figma 140px gutter at 1680 wide.
+*/
+:root {
+  --spacing: min(calc(100vw / 390), 1.6px);
+
+  --fs-xlarge: calc(var(--spacing) * 72);
+  --fs-large: calc(var(--spacing) * 46);
+  --fs-medium: calc(var(--spacing) * 38);
+  --fs-small: calc(var(--spacing) * 28);
+  --fs-h2: calc(var(--spacing) * 24);
+  --fs-h3: calc(var(--spacing) * 20);
+  --fs-h4: calc(var(--spacing) * 17);
+  --fs-text-lg: max(15px, calc(var(--spacing) * 16));
+  --fs-text: max(14px, calc(var(--spacing) * 15));
+  --fs-text-sm: max(12px, calc(var(--spacing) * 13));
+  --fs-button: max(15px, calc(var(--spacing) * 16));
+  --fs-label: max(11px, calc(var(--spacing) * 12));
+}
+
+@media (width >= 64rem) {
+  :root {
+    --spacing: min(calc(100vw / 1680), 1px);
+
+    --fs-xlarge: calc(var(--spacing) * 200);
+    --fs-large: calc(var(--spacing) * 100);
+    --fs-medium: calc(var(--spacing) * 70);
+    --fs-small: calc(var(--spacing) * 60);
+    --fs-h2: calc(var(--spacing) * 40);
+    --fs-h3: calc(var(--spacing) * 30);
+    --fs-h4: calc(var(--spacing) * 24);
+    --fs-text-lg: max(14px, calc(var(--spacing) * 18));
+    --fs-text: max(13px, calc(var(--spacing) * 16));
+    --fs-text-sm: max(12px, calc(var(--spacing) * 14));
+    --fs-button: max(14px, calc(var(--spacing) * 18));
+    --fs-label: max(11px, calc(var(--spacing) * 14));
+  }
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../fonts/ClashDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --font-display: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+
+  /* Figma color styles */
+  --color-bg: #eeedee;
+  --color-ink: #101010;
+  --color-accent: #db574d;
+  --color-line: rgb(16 16 16 / 0.1);
+  --color-muted: rgb(16 16 16 / 0.6);
+
+  /* Figma text styles: heading/*, text/*, button/* */
+  --text-xlarge: var(--fs-xlarge);
+  --text-xlarge--line-height: 0.9;
+  --text-large: var(--fs-large);
+  --text-large--line-height: 1.1;
+  --text-medium: var(--fs-medium);
+  --text-medium--line-height: 1.1;
+  --text-small: var(--fs-small);
+  --text-small--line-height: 1.1;
+  --text-h2: var(--fs-h2);
+  --text-h2--line-height: 1.1;
+  --text-h3: var(--fs-h3);
+  --text-h3--line-height: 1.2;
+  --text-h4: var(--fs-h4);
+  --text-h4--line-height: 1.1;
+  --text-body-lg: var(--fs-text-lg);
+  --text-body-lg--line-height: 1.6;
+  --text-body: var(--fs-text);
+  --text-body--line-height: 1.6;
+  --text-body-sm: var(--fs-text-sm);
+  --text-body-sm--line-height: 1.6;
+  --text-button: var(--fs-button);
+  --text-button--line-height: 1.2;
+  --text-label: var(--fs-label);
+  --text-label--line-height: 1.2;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* The custom cursor replaces the native one only on fine pointers */
+@media (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* Text that rolls up to a copy of itself on hover */
+.roll {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+}
+.roll > span {
+  position: relative;
+  display: block;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+.roll > span > span {
+  display: block;
+}
+/* The copy waits just below the clip */
+.roll > span > span + span {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+.group:hover .roll > span,
+.group:focus-visible .roll > span {
+  transform: translateY(-100%);
+}
+
+/* Elements GSAP reveals start hidden only when JS runs, so no-JS still shows content */
+html.js [data-reveal] {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roll > span {
+    transition: none;
+  }
+  html.js [data-reveal] {
+    visibility: visible;
+  }
+}
+
+/* Room for descenders (g, ø, J) inside SplitText line masks */
+.split-line-mask {
+  padding: 0.22em 0.06em;
+  /* Sibling margins collapse rather than add, so one -0.44em bottom margin does both lines' share */
+  margin: 0 -0.06em -0.44em;
+}
+.split-line-mask:first-child {
+  margin-top: -0.22em;
+}
+.split-line-mask:last-child {
+  margin-bottom: -0.22em;
+}
+
+/* Hero pieces stay hidden until the loader hands over */
+[data-intro="false"] :is([data-hero-thumb], [data-hero-cta], [data-hero-scroll], [data-hero-fade]) {
+  visibility: hidden;
+}
