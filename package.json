@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "blur": "node scripts/blur.mjs",
-    "prebuild": "node scripts/blur.mjs"
+    "prebuild": "node scripts/blur.mjs",
+    "bench": "node scripts/bench.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

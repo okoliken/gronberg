@@ -11,10 +11,12 @@ type Props = {
   /** Tailwind aspect class for the Figma frame */
   aspect: string;
   sizes: string;
+  /** above the fold on load: fetch eagerly at high priority */
+  priority?: boolean;
 };
 
 // The image carries a view-transition name, so it morphs into the project page hero
-export function ProjectCard({ project, image, aspect, sizes }: Props) {
+export function ProjectCard({ project, image, aspect, sizes, priority }: Props) {
   return (
     <Link href={`/projects/${project.slug}`} data-cursor="view" className="group flex flex-col gap-12">
       <SplitReveal as="h3" className="text-h3">
@@ -22,7 +24,7 @@ export function ProjectCard({ project, image, aspect, sizes }: Props) {
       </SplitReveal>
       <div data-skew>
         <ViewTransition name={`project-${project.slug}`} share="morph" default="none">
-          <RevealImage src={image.src} alt={image.alt} sizes={sizes} parallax className={`w-full ${aspect}`} />
+          <RevealImage src={image.src} alt={image.alt} sizes={sizes} priority={priority} parallax className={`w-full ${aspect}`} />
         </ViewTransition>
       </div>
       <SplitReveal as="p" className="text-body">

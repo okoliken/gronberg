@@ -44,7 +44,7 @@ export default function ProjectsPage() {
       </section>
 
       <div className="mx-20 mt-80 lg:mx-auto lg:mt-0 lg:w-1400">
-        <ProjectGrid items={items} height="lg:h-3862" />
+        <ProjectGrid items={items} height="lg:h-3862" priorityCount={2} />
       </div>
 
       <Cta />

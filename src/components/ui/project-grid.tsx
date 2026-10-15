@@ -20,7 +20,7 @@ const SIZES = {
 };
 
 // Absolutely positioned on desktop exactly as in Figma; a staggered single column on mobile
-export function ProjectGrid({ items, height }: { items: GridItem[]; height: string }) {
+export function ProjectGrid({ items, height, priorityCount = 0 }: { items: GridItem[]; height: string; priorityCount?: number }) {
   const ref = useRef<HTMLUListElement>(null);
 
   useGSAP(
@@ -68,7 +68,7 @@ export function ProjectGrid({ items, height }: { items: GridItem[]; height: stri
             data-speed={item.speed}
             className={`lg:absolute ${item.position} ${size.width} ${i % 2 ? "w-[75%] justify-self-end" : "w-full"}`}
           >
-            <ProjectCard project={item.project} image={item.image} aspect={size.aspect} sizes={size.sizes} />
+            <ProjectCard project={item.project} image={item.image} aspect={size.aspect} sizes={size.sizes} priority={i < priorityCount} />
           </li>
         );
       })}
