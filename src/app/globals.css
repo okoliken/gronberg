@@ -213,3 +213,12 @@ html.js [data-reveal] {
     animation: none !important;
   }
 }
+
+/* Intro skipped by the <head> script: no loader, hero visible from the first paint */
+html.intro-skip [data-loader] {
+  display: none;
+}
+html.intro-skip [data-intro="false"] [data-hero-image],
+html.intro-skip [data-intro="false"] :is([data-hero-thumb], [data-hero-cta], [data-hero-scroll], [data-hero-fade]) {
+  visibility: visible;
+}

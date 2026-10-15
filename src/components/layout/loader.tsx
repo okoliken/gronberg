@@ -14,8 +14,6 @@ import { useIntro } from "./intro";
 */
 const placeholders: Record<string, string> = blur;
 
-type Connection = { saveData?: boolean; effectiveType?: string };
-
 const loaded = (img: HTMLImageElement) =>
   img.complete && img.naturalWidth
     ? Promise.resolve()
@@ -48,13 +46,10 @@ export function Loader() {
       window.scrollTo(0, 0);
 
       const imgs = Array.from(root.querySelectorAll("img"));
-      const hero = imgs[imgs.length - 1];
 
-      // Reduced motion, Save-Data or 3G and slower: skip the show and hand over as soon as the hero photo is in
-      const connection = (navigator as Navigator & { connection?: Connection }).connection;
-      const lite = connection?.saveData || /2g|3g/.test(connection?.effectiveType ?? "");
-      if (lite || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        settled([hero], 3000).then(() => gsap.to(root, { autoAlpha: 0, duration: 0.4, onComplete: done }));
+      // The <head> script already hid the loader (slow connection or reduced motion): hand over at once
+      if (document.documentElement.classList.contains("intro-skip")) {
+        done();
         return;
       }
 
@@ -127,7 +122,7 @@ export function Loader() {
   if (gone) return null;
 
   return (
-    <div ref={ref} className="fixed inset-0 z-[60]" aria-hidden="true">
+    <div ref={ref} data-loader className="fixed inset-0 z-[60]" aria-hidden="true">
       <div data-backdrop className="absolute inset-0 bg-bg" />
 
       <div
@@ -136,12 +131,13 @@ export function Loader() {
       >
         {loaderFrames.map((src, i) => (
           <div key={src} data-shot className={`absolute inset-0 ${i === 0 ? "" : "invisible opacity-0"}`}>
-            {/* Flicked frames are 230px wide; only the last one, which becomes the hero, loads at hero size */}
+            {/* Flicked frames are 230px wide and lazy, so a hidden loader never fetches them;
+                only the last one, which becomes the hero, loads at hero size */}
             <Image
               src={src}
               alt=""
               fill
-              loading="eager"
+              loading={i === loaderFrames.length - 1 ? "eager" : "lazy"}
               priority={i === loaderFrames.length - 1}
               sizes={i === loaderFrames.length - 1 ? "(min-width: 64rem) 45vw, 100vw" : "240px"}
               placeholder={placeholders[src] ? "blur" : "empty"}
