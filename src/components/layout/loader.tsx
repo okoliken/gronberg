@@ -50,9 +50,9 @@ export function Loader() {
       const imgs = Array.from(root.querySelectorAll("img"));
       const hero = imgs[imgs.length - 1];
 
-      // Reduced motion, Save-Data or 2G: skip the show and hand over as soon as the hero photo is in
+      // Reduced motion, Save-Data or 3G and slower: skip the show and hand over as soon as the hero photo is in
       const connection = (navigator as Navigator & { connection?: Connection }).connection;
-      const lite = connection?.saveData || /2g/.test(connection?.effectiveType ?? "");
+      const lite = connection?.saveData || /2g|3g/.test(connection?.effectiveType ?? "");
       if (lite || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         settled([hero], 3000).then(() => gsap.to(root, { autoAlpha: 0, duration: 0.4, onComplete: done }));
         return;
