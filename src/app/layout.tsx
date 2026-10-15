@@ -16,8 +16,10 @@ const clash = localFont({
 });
 
 // Runs before any bundle: on slow or data-saving connections (or reduced motion) the intro is
-// skipped with CSS, so the hero paints straight from the server HTML instead of waiting for React
-const introSkip = `try{var c=navigator.connection;if((c&&(c.saveData||/2g|3g/.test(c.effectiveType)))||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("intro-skip")}catch(e){}`;
+// skipped with CSS, so the hero paints straight from the server HTML instead of waiting for React.
+// "Slow" is judged by measured bandwidth, not effectiveType: Chrome labels high-latency but fast
+// links as "3g", which would hide the loader for many real visitors.
+const introSkip = `try{var c=navigator.connection;if((c&&(c.saveData||/2g/.test(c.effectiveType)||(c.downlink>0&&c.downlink<1.5)))||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("intro-skip")}catch(e){}`;
 
 export const metadata: Metadata = {
   title: "Jacob Grønberg — Photographer & Visual Artist",

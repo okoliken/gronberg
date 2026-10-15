@@ -41,7 +41,7 @@ That is also what makes the shared-element transitions possible. With React’s 
 The intro loader flicks through the portfolio and flies the last photo onto the hero. It is built to never cost much:
 - the flicked frames load at 240px, not hero size (**165 KB instead of 878 KB** on a retina screen);
 - it holds the final fly-out until the hero photo has arrived, capped at 4 seconds;
-- a tiny inline script in `<head>` checks the connection **before any JavaScript bundle loads**. On Save-Data, 2G/3G or `prefers-reduced-motion`, the loader is hidden with CSS, its frames are never fetched, and the hero paints straight from the server HTML.
+- a tiny inline script in `<head>` checks the connection **before any JavaScript bundle loads**. On Save-Data, 2G, under 1.5 Mbps measured bandwidth, or `prefers-reduced-motion`, the loader is hidden with CSS, its frames are never fetched, and the hero paints straight from the server HTML.
 
 That last change took the home page on slow 3G from an LCP of **17.6 s to 2.3–3.9 s**.
 
