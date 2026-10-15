@@ -1,4 +1,5 @@
 import Image from "next/image";
+import blur from "@/content/blur.json";
 import { Fragment } from "react";
 import { MAILTO, testimonials } from "@/content/site";
 import { QuoteMark } from "@/components/ui/arrow";
@@ -37,7 +38,15 @@ export function Clients() {
             {i > 0 && <li aria-hidden="true" className="h-px bg-line" />}
             <li className="flex gap-20 lg:gap-50">
               <div className="relative size-64 shrink-0 overflow-hidden lg:size-120">
-                <Image src={t.avatar} alt={t.name} fill sizes="120px" className="object-cover" />
+                <Image
+                  src={t.avatar}
+                  alt={t.name}
+                  fill
+                  sizes="120px"
+                  placeholder="blur"
+                  blurDataURL={(blur as Record<string, string>)[t.avatar]}
+                  className="object-cover"
+                />
               </div>
               <figure className="flex flex-col gap-16 lg:w-530 lg:gap-24">
                 <div className="flex items-center gap-16 lg:gap-30">

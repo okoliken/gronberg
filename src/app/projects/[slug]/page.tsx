@@ -47,6 +47,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
             sizes="(min-width: 64rem) 42vw, 100vw"
             priority
             reveal={false}
+            parallax
             className="aspect-[700/855.6] w-full lg:w-700"
           />
         </ViewTransition>
@@ -84,7 +85,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       <section aria-label="Gallery" className="mx-20 mt-100 flex flex-col gap-20 lg:relative lg:mx-auto lg:mt-224 lg:block lg:h-3554 lg:w-1400">
         {project.gallery.map((image, i) => (
           <div key={`${image.src}-${i}`} className={`lg:absolute ${gallerySlots[i].position} ${i % 2 ? "w-[70%] self-end" : "w-full"}`}>
-            <RevealImage src={image.src} alt={image.alt} sizes={gallerySlots[i].sizes} className={`w-full ${gallerySlots[i].aspect}`} />
+            <RevealImage src={image.src} alt={image.alt} sizes={gallerySlots[i].sizes} parallax className={`w-full ${gallerySlots[i].aspect}`} />
           </div>
         ))}
       </section>
@@ -105,7 +106,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </SplitReveal>
         <Link href={`/projects/${next.slug}`} data-cursor="view" className="group -mt-40 block w-full lg:-mt-80 lg:w-700" aria-label={`Open ${plainTitle(next.title)}`}>
           <ViewTransition name={`project-${next.slug}`} share="morph" default="none">
-            <RevealImage src={next.cover.src} alt={next.cover.alt} sizes="(min-width: 64rem) 42vw, 100vw" className="aspect-[700/855.6] w-full" />
+            <RevealImage src={next.cover.src} alt={next.cover.alt} sizes="(min-width: 64rem) 42vw, 100vw" parallax className="aspect-[700/855.6] w-full" />
           </ViewTransition>
         </Link>
         <div className="relative z-10 -mt-80 lg:-mt-120">

@@ -44,6 +44,7 @@ export default async function ExhibitionPage({ params }: PageProps<"/exhibitions
             sizes="(min-width: 64rem) 48vw, 100vw"
             priority
             reveal={false}
+            parallax
             className="relative -mt-24 aspect-[800/975] w-full lg:-mt-64 lg:w-800"
           />
         </ViewTransition>

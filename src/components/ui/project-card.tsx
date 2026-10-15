@@ -22,7 +22,7 @@ export function ProjectCard({ project, image, aspect, sizes }: Props) {
       </SplitReveal>
       <div data-skew>
         <ViewTransition name={`project-${project.slug}`} share="morph" default="none">
-          <RevealImage src={image.src} alt={image.alt} sizes={sizes} className={`w-full ${aspect}`} />
+          <RevealImage src={image.src} alt={image.alt} sizes={sizes} parallax className={`w-full ${aspect}`} />
         </ViewTransition>
       </div>
       <SplitReveal as="p" className="text-body">

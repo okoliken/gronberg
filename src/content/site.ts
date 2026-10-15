@@ -3,7 +3,7 @@
 export type Title = { text: string; accent: string };
 export type Img = { src: string; alt: string };
 
-export const EMAIL = "hello@jacobgronberg.com";
+export const EMAIL = "jahbuchimokoli3@gmail.com";
 export const MAILTO = `mailto:${EMAIL}`;
 
 export const nav = [

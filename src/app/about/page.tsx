@@ -39,6 +39,7 @@ export default function AboutPage() {
             alt="Portrait of Jacob Grønberg"
             sizes="(min-width: 64rem) 42vw, 100vw"
             priority
+            parallax
             className="aspect-square w-full lg:w-700"
           />
         </div>

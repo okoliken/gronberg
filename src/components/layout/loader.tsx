@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import blur from "@/content/blur.json";
 import { loaderFrames } from "@/content/site";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { useIntro } from "./intro";
@@ -11,6 +12,22 @@ import { useIntro } from "./intro";
   2. "Jacob" and "Grønberg" part, a frame opens between them and flicks through the portfolio.
   3. The last photo flies onto the hero image (found via [data-hero-image]) and the page takes over.
 */
+const placeholders: Record<string, string> = blur;
+
+type Connection = { saveData?: boolean; effectiveType?: string };
+
+const loaded = (img: HTMLImageElement) =>
+  img.complete && img.naturalWidth
+    ? Promise.resolve()
+    : new Promise<void>((resolve) => {
+        img.addEventListener("load", () => resolve(), { once: true });
+        img.addEventListener("error", () => resolve(), { once: true });
+      });
+
+// Resolves when every image has loaded, or after `ms` so a slow network never traps the visitor
+const settled = (imgs: HTMLImageElement[], ms: number) =>
+  Promise.race([Promise.all(imgs.map(loaded)), new Promise((resolve) => setTimeout(resolve, ms))]);
+
 export function Loader() {
   const ref = useRef<HTMLDivElement>(null);
   const [gone, setGone] = useState(false);
@@ -30,10 +47,18 @@ export function Loader() {
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
       window.scrollTo(0, 0);
 
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.to(root, { autoAlpha: 0, duration: 0.4, delay: 0.6, onComplete: done });
+      const imgs = Array.from(root.querySelectorAll("img"));
+      const hero = imgs[imgs.length - 1];
+
+      // Reduced motion, Save-Data or 2G: skip the show and hand over as soon as the hero photo is in
+      const connection = (navigator as Navigator & { connection?: Connection }).connection;
+      const lite = connection?.saveData || /2g/.test(connection?.effectiveType ?? "");
+      if (lite || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        settled([hero], 3000).then(() => gsap.to(root, { autoAlpha: 0, duration: 0.4, onComplete: done }));
         return;
       }
+
+      let ready = false;
 
       gsap.set(frame, { xPercent: -50, yPercent: -50 });
       const count = { v: 0 };
@@ -66,7 +91,16 @@ export function Loader() {
       // Each shot is stacked on the last, like a contact sheet being flicked through
       shots.forEach((shot, i) => tl.set(shot, { autoAlpha: 1 }, `open+=${0.35 + i * 0.17}`));
 
+      // Hold before the fly-out until the frames (and the hero photo) have arrived, capped at 4s
+      settled(imgs, 4000).then(() => {
+        ready = true;
+        if (tl.paused()) tl.play();
+      });
+
       tl.addLabel("fly", "+=0.25")
+        .addPause("fly", () => {
+          if (ready) tl.play();
+        })
         .to("[data-logo-line]", { yPercent: -110, duration: 0.8, stagger: 0.05, ease: "expo.in" }, "fly")
         .to(counter, { autoAlpha: 0, duration: 0.4 }, "fly")
         .to(
@@ -102,7 +136,18 @@ export function Loader() {
       >
         {loaderFrames.map((src, i) => (
           <div key={src} data-shot className={`absolute inset-0 ${i === 0 ? "" : "invisible opacity-0"}`}>
-            <Image src={src} alt="" fill sizes="(min-width: 64rem) 45vw, 100vw" priority={i < 2} className="object-cover" />
+            {/* Flicked frames are 230px wide; only the last one, which becomes the hero, loads at hero size */}
+            <Image
+              src={src}
+              alt=""
+              fill
+              loading="eager"
+              priority={i === loaderFrames.length - 1}
+              sizes={i === loaderFrames.length - 1 ? "(min-width: 64rem) 45vw, 100vw" : "240px"}
+              placeholder={placeholders[src] ? "blur" : "empty"}
+              blurDataURL={placeholders[src]}
+              className="object-cover"
+            />
           </div>
         ))}
       </div>
