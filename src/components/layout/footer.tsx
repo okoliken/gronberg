@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { infoLinks, nav } from "@/content/home";
+import { infoLinks, nav } from "@/content/site";
 import { RollText } from "@/components/ui/roll-text";
 import { SplitReveal } from "@/components/ui/split-reveal";
 import { BottomBar } from "./bottom-bar";

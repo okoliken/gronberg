@@ -1,4 +1,4 @@
-import type { Title } from "@/content/home";
+import type { Title } from "@/content/site";
 
 // The design's title pattern: uppercase ink words, then a title-case accent word in red
 export function AccentTitle({ title, accentClassName = "" }: { title: Title; accentClassName?: string }) {

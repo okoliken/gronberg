@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Title } from "@/content/home";
+import type { Title } from "@/content/site";
 import { AccentTitle } from "./accent-title";
 import { Arrow } from "./arrow";
 import { RollText } from "./roll-text";
@@ -31,7 +31,7 @@ export function OutlineButton({ href, children }: { href: string; children: stri
   return (
     <Link
       href={href}
-      className="group relative inline-flex items-center gap-10 overflow-hidden rounded-full border border-accent px-20 py-16 text-button text-accent transition-colors duration-500 hover:text-white"
+      className="group relative inline-flex items-center gap-10 overflow-hidden rounded-full border whitespace-nowrap border-accent px-20 py-16 text-button text-accent transition-colors duration-500 hover:text-white"
     >
       <span
         aria-hidden="true"

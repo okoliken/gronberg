@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, type RefObject } from "react";
-import { nav } from "@/content/home";
+import { nav } from "@/content/site";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { RollText } from "@/components/ui/roll-text";
 import { useLenis } from "./smooth-scroll";
@@ -74,7 +74,7 @@ export function Menu({ open, onClose, returnFocus }: Props) {
     >
       <div className="flex items-start justify-between px-20 pt-24 lg:px-50 lg:pt-49">
         <Link href="/" onClick={onClose} className="text-h4 uppercase" data-menu-fade>
-          Jacob Grönberg
+          Jacob Grønberg
         </Link>
         <button
           ref={closeRef}

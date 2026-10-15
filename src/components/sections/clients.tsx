@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import { testimonials } from "@/content/home";
+import { MAILTO, testimonials } from "@/content/site";
 import { QuoteMark } from "@/components/ui/arrow";
 import { OutlineButton } from "@/components/ui/section-heading";
 import { SplitReveal } from "@/components/ui/split-reveal";
@@ -8,6 +8,7 @@ import { SplitReveal } from "@/components/ui/split-reveal";
 export function Clients() {
   return (
     <section
+      id="clients"
       aria-labelledby="clients-title"
       className="mx-20 mt-140 lg:mx-auto lg:mt-224 lg:flex lg:w-1400 lg:items-start lg:justify-between"
     >
@@ -26,7 +27,7 @@ export function Clients() {
           </SplitReveal>
         </div>
         <div>
-          <OutlineButton href="/contact">Work With Me</OutlineButton>
+          <OutlineButton href={MAILTO}>Work With Me</OutlineButton>
         </div>
       </div>
 

@@ -16,9 +16,10 @@ One Tailwind spacing unit equals one Figma pixel. On desktop the 1680px frame sc
 ## Motion
 
 - **Loader → hero:** the logo parts, a frame flicks through the portfolio, then the last photo flies onto the hero image.
-- **Images:** clip-path wipe on enter, settle-in scale, parallax drift, inset + zoom on hover, velocity skew in Latest Work.
+- **Images:** clip-path wipe on enter, settle-in scale, inset + zoom on hover; grid cards drift at different speeds and lean with scroll velocity.
+- **Page transitions:** React `<ViewTransition>` — project cards and exhibition thumbnails morph into the next page’s hero; everything else lifts out and rises in.
 - **Type:** masked line reveals via SplitText; links roll to a copy of themselves on hover.
-- **Cursor:** the design's red dot, grows into a "view" disc over images; magnetic CTAs.
+- **Cursor:** the design’s red dot, grows into the "View" disc over images; magnetic CTAs.
 - `prefers-reduced-motion` turns all of this into plain fades or nothing.
 
 ## Develop

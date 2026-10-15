@@ -1,4 +1,4 @@
-import { socials } from "@/content/home";
+import { socials } from "@/content/site";
 import { RollText } from "@/components/ui/roll-text";
 
 // Credits + socials row shared by the menu and the footer
@@ -6,9 +6,9 @@ export function BottomBar() {
   return (
     <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
       <p className="flex flex-wrap items-center gap-x-10 text-body">
-        <span className="whitespace-nowrap">© Made by Pawel Gola</span>
+        <span className="whitespace-nowrap">© Design by Pawel Gola</span>
         <span className="h-px w-15 bg-black" aria-hidden="true" />
-        <span className="whitespace-nowrap">Powered by Webflow</span>
+        <span className="whitespace-nowrap">Built with Next.js &amp; GSAP</span>
       </p>
       <ul className="flex gap-30">
         {socials.map((s) => (

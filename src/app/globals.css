@@ -13,9 +13,11 @@
   --fs-large: calc(var(--spacing) * 46);
   --fs-medium: calc(var(--spacing) * 38);
   --fs-small: calc(var(--spacing) * 28);
+  --fs-h1: calc(var(--spacing) * 30);
   --fs-h2: calc(var(--spacing) * 24);
   --fs-h3: calc(var(--spacing) * 20);
   --fs-h4: calc(var(--spacing) * 17);
+  --fs-intro: max(16px, calc(var(--spacing) * 17));
   --fs-text-lg: max(15px, calc(var(--spacing) * 16));
   --fs-text: max(14px, calc(var(--spacing) * 15));
   --fs-text-sm: max(12px, calc(var(--spacing) * 13));
@@ -31,9 +33,11 @@
     --fs-large: calc(var(--spacing) * 100);
     --fs-medium: calc(var(--spacing) * 70);
     --fs-small: calc(var(--spacing) * 60);
+    --fs-h1: calc(var(--spacing) * 50);
     --fs-h2: calc(var(--spacing) * 40);
     --fs-h3: calc(var(--spacing) * 30);
     --fs-h4: calc(var(--spacing) * 24);
+    --fs-intro: max(16px, calc(var(--spacing) * 22));
     --fs-text-lg: max(14px, calc(var(--spacing) * 18));
     --fs-text: max(13px, calc(var(--spacing) * 16));
     --fs-text-sm: max(12px, calc(var(--spacing) * 14));
@@ -69,12 +73,16 @@
   --text-medium--line-height: 1.1;
   --text-small: var(--fs-small);
   --text-small--line-height: 1.1;
+  --text-h1: var(--fs-h1);
+  --text-h1--line-height: 1.1;
   --text-h2: var(--fs-h2);
   --text-h2--line-height: 1.1;
   --text-h3: var(--fs-h3);
   --text-h3--line-height: 1.2;
   --text-h4: var(--fs-h4);
   --text-h4--line-height: 1.1;
+  --text-intro: var(--fs-intro);
+  --text-intro--line-height: 1.6;
   --text-body-lg: var(--fs-text-lg);
   --text-body-lg--line-height: 1.6;
   --text-body: var(--fs-text);
@@ -171,4 +179,45 @@ html.js [data-reveal] {
 /* Hero pieces stay hidden until the loader hands over */
 [data-intro="false"] :is([data-hero-thumb], [data-hero-cta], [data-hero-scroll], [data-hero-fade]) {
   visibility: hidden;
+}
+
+/* Route transitions: the old page lifts away, the new one rises in */
+::view-transition-old(.page-exit) {
+  animation: page-out 0.45s cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+::view-transition-new(.page-enter) {
+  animation: page-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+}
+
+/* Shared images: grow from the card into the hero without stretching */
+::view-transition-group(.morph) {
+  z-index: 10;
+  animation-duration: 1.1s;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+}
+::view-transition-old(.morph),
+::view-transition-new(.morph) {
+  height: 100%;
+  object-fit: cover;
+  animation-duration: 1.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

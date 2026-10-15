@@ -2,11 +2,10 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { Arrow } from "@/components/ui/arrow";
 
 /*
   The red dot from the design as a cursor.
-  [data-cursor="view"] grows it into a disc with an arrow; links make it a little larger.
+  [data-cursor="view"] grows it into the "View" disc from the Projects frame; links make it a little larger.
 */
 export function Cursor() {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,7 +16,7 @@ export function Cursor() {
     mm.add("(pointer: fine)", () => {
       const el = ref.current!;
       document.documentElement.classList.add("has-cursor");
-      gsap.set(el, { xPercent: -50, yPercent: -50, scale: 0.12 });
+      gsap.set(el, { xPercent: -50, yPercent: -50, scale: 0.09 });
 
       const x = gsap.quickTo(el, "x", { duration: 0.5, ease: "power3" });
       const y = gsap.quickTo(el, "y", { duration: 0.5, ease: "power3" });
@@ -26,7 +25,7 @@ export function Cursor() {
       const setState = (next: string) => {
         if (next === state) return;
         state = next;
-        gsap.to(el, { scale: next === "view" ? 1 : next === "link" ? 0.3 : 0.12, duration: 0.6, ease: "expo.out" });
+        gsap.to(el, { scale: next === "view" ? 1 : next === "link" ? 0.2 : 0.09, duration: 0.6, ease: "expo.out" });
         gsap.to(icon.current, { autoAlpha: next === "view" ? 1 : 0, scale: next === "view" ? 1 : 0.4, duration: 0.4 });
       };
 
@@ -56,10 +55,10 @@ export function Cursor() {
     <div
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed top-0 left-0 z-[100] invisible grid size-100 place-items-center rounded-full bg-accent text-white opacity-0 max-lg:hidden"
+      className="pointer-events-none fixed top-0 left-0 z-[100] invisible grid size-140 place-items-center rounded-full bg-accent text-white opacity-0 max-lg:hidden"
     >
-      <div ref={icon} className="invisible opacity-0">
-        <Arrow external className="w-30" />
+      <div ref={icon} className="invisible text-button uppercase opacity-0">
+        View
       </div>
     </div>
   );

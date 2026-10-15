@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { loaderFrames } from "@/content/home";
+import { loaderFrames } from "@/content/site";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { useIntro } from "./intro";
 

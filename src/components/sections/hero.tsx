@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { useIntro } from "@/components/layout/intro";
+import { MAILTO } from "@/content/site";
 import { ScrollArrow } from "@/components/ui/arrow";
 import { Magnetic } from "@/components/ui/magnetic";
 import { RevealImage } from "@/components/ui/reveal-image";
@@ -105,14 +106,14 @@ export function Hero() {
             />
           </div>
           <figcaption data-hero-fade className="mt-10 text-body">
-            Hi, Im Jacob
+            Hi, I’m Jacob
           </figcaption>
         </figure>
 
         <div className="relative mr-20 size-110 lg:absolute lg:top-999 lg:left-208 lg:mr-0 lg:size-140">
           <Magnetic className="size-full">
             <Link
-              href="/contact"
+              href={MAILTO}
               data-hero-cta
               className="group relative grid size-full place-items-center rounded-full bg-accent text-center text-button text-white uppercase"
             >

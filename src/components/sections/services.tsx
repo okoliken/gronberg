@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { services } from "@/content/home";
+import { services } from "@/content/site";
 import { SplitReveal } from "@/components/ui/split-reveal";
 import { gsap, MOTION_OK, useGSAP } from "@/lib/gsap";
 
@@ -29,7 +29,7 @@ export function Services() {
   );
 
   return (
-    <section ref={ref} aria-label="Services" className="mx-20 mt-120 lg:mx-auto lg:mt-159 lg:flex lg:w-1400">
+    <section ref={ref} id="services" aria-label="Services" className="mx-20 mt-120 lg:mx-auto lg:mt-159 lg:flex lg:w-1400">
       <p className="flex items-center gap-10 self-start text-body lg:w-499 lg:shrink-0 lg:pt-3 lg:pl-244">
         <span className="h-px w-15 bg-black" aria-hidden="true" />
         Services

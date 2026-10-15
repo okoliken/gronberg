@@ -28,8 +28,8 @@ export function Header() {
         ref={ref}
         className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-20 pt-24 lg:px-40 lg:pt-50"
       >
-        <Link href="/" className="text-h4 uppercase" aria-label="Jacob Grönberg, home">
-          Jacob Grönberg
+        <Link href="/" className="text-h4 uppercase" aria-label="Jacob Grønberg, home">
+          Jacob Grønberg
         </Link>
         <button
           ref={toggleRef}
