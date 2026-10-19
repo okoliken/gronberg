@@ -83,7 +83,7 @@ export function Menu({ open, onClose, returnFocus }: Props) {
           aria-label="Close menu"
           className="group absolute -top-40 -right-32 size-200 rounded-full border border-accent max-lg:-top-60 max-lg:-right-60 max-lg:size-160"
         >
-          <span className="absolute top-1/2 left-1/2 h-px w-50 -translate-x-1/2 rotate-45 bg-black transition-transform duration-700 ease-out-expo group-hover:rotate-[135deg]" />
+          <span className="absolute top-1/2 left-1/2 h-px w-50 -translate-x-1/2 rotate-45 bg-black transition-transform duration-700 ease-out-expo group-hover:rotate-135" />
           <span className="absolute top-1/2 left-1/2 h-px w-50 -translate-x-1/2 -rotate-45 bg-black transition-transform duration-700 ease-out-expo group-hover:rotate-45" />
         </button>
       </div>

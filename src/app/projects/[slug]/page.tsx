@@ -21,10 +21,10 @@ const plainTitle = (t: Title) => `${t.text.replace("\n", " ")} ${t.accent}`;
 
 // Figma "images" group: 1400x3554, positions relative to its top-left
 const gallerySlots = [
-  { position: "lg:top-0 lg:left-0 lg:w-700", aspect: "aspect-[700/900]", sizes: "(min-width: 64rem) 42vw, 100vw" },
-  { position: "lg:top-173 lg:left-846 lg:w-409", aspect: "aspect-[409/500]", sizes: "(min-width: 64rem) 25vw, 70vw" },
+  { position: "lg:top-0 lg:left-0 lg:w-700", aspect: "aspect-700/900", sizes: "(min-width: 64rem) 42vw, 100vw" },
+  { position: "lg:top-173 lg:left-846 lg:w-409", aspect: "aspect-409/500", sizes: "(min-width: 64rem) 25vw, 70vw" },
   { position: "lg:top-1075 lg:left-0 lg:w-1399", aspect: "aspect-square", sizes: "(min-width: 64rem) 84vw, 100vw" },
-  { position: "lg:top-2699 lg:left-701 lg:w-700", aspect: "aspect-[700/855]", sizes: "(min-width: 64rem) 42vw, 100vw" },
+  { position: "lg:top-2699 lg:left-701 lg:w-700", aspect: "aspect-700/855", sizes: "(min-width: 64rem) 42vw, 100vw" },
   { position: "lg:top-2912 lg:left-125 lg:w-400", aspect: "aspect-square", sizes: "(min-width: 64rem) 24vw, 60vw" },
 ];
 

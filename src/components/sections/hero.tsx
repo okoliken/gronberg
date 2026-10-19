@@ -82,7 +82,7 @@ export function Hero() {
 
       <div
         data-hero-image
-        className={`mt-40 lg:absolute lg:top-154 lg:left-648.5 lg:z-[5] lg:mt-0 ${done ? "" : "invisible"}`}
+        className={`mt-40 lg:absolute lg:top-154 lg:left-648.5 lg:z-5 lg:mt-0 ${done ? "" : "invisible"}`}
       >
         <RevealImage
           src="/images/ballet-tutu.jpg"
@@ -90,7 +90,7 @@ export function Hero() {
           sizes="(min-width: 64rem) 45vw, 100vw"
           priority
           reveal={false}
-          className="aspect-[751.5/918] w-full lg:w-751.5"
+          className="aspect-751.5/918 w-full lg:w-751.5"
         />
       </div>
 
@@ -124,7 +124,7 @@ export function Hero() {
               </span>
               <span
                 aria-hidden="true"
-                className="absolute -top-[6.4%] left-[7.1%] size-[114.3%] rounded-full border border-accent transition-transform duration-700 ease-out-expo group-hover:-translate-x-[12.5%]"
+                className="absolute top-[-6.4%] left-[7.1%] size-[114.3%] rounded-full border border-accent transition-transform duration-700 ease-out-expo group-hover:translate-x-[-12.5%]"
               />
             </Link>
           </Magnetic>

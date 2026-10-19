@@ -55,7 +55,7 @@ export function Cursor() {
     <div
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed top-0 left-0 z-[100] invisible grid size-140 place-items-center rounded-full bg-accent text-white opacity-0 max-lg:hidden"
+      className="pointer-events-none fixed top-0 left-0 z-100 invisible grid size-140 place-items-center rounded-full bg-accent text-white opacity-0 max-lg:hidden"
     >
       <div ref={icon} className="invisible text-button uppercase opacity-0">
         View

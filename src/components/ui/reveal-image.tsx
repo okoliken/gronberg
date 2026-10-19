@@ -72,7 +72,7 @@ export const RevealImage = forwardRef<HTMLDivElement, Props>(function RevealImag
   return (
     <div ref={frame} className={`relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 overflow-hidden transition-[clip-path] duration-1000 ease-out-expo [clip-path:inset(0%)] group-hover:[clip-path:inset(2.5%)]">
-        <div ref={settle} className={`absolute inset-x-0 ${parallax ? "-inset-y-[4%]" : "inset-y-0"}`}>
+        <div ref={settle} className={`absolute inset-x-0 ${parallax ? "inset-y-[-4%]" : "inset-y-0"}`}>
           <Image
             src={src}
             alt={alt}

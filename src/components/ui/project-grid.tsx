@@ -16,7 +16,7 @@ export type GridItem = {
 
 const SIZES = {
   lg: { width: "lg:w-700", aspect: "aspect-[700/855.6]", sizes: "(min-width: 64rem) 42vw, 100vw" },
-  sm: { width: "lg:w-409", aspect: "aspect-[409/500]", sizes: "(min-width: 64rem) 25vw, 75vw" },
+  sm: { width: "lg:w-409", aspect: "aspect-409/500", sizes: "(min-width: 64rem) 25vw, 75vw" },
 };
 
 // Absolutely positioned on desktop exactly as in Figma; a staggered single column on mobile

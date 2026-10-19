@@ -45,7 +45,7 @@ export default async function ExhibitionPage({ params }: PageProps<"/exhibitions
             priority
             reveal={false}
             parallax
-            className="relative -mt-24 aspect-[800/975] w-full lg:-mt-64 lg:w-800"
+            className="relative -mt-24 aspect-800/975 w-full lg:-mt-64 lg:w-800"
           />
         </ViewTransition>
       </section>

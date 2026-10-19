@@ -122,7 +122,7 @@ export function Loader() {
   if (gone) return null;
 
   return (
-    <div ref={ref} data-loader className="fixed inset-0 z-[60]" aria-hidden="true">
+    <div ref={ref} data-loader className="fixed inset-0 z-60" aria-hidden="true">
       <div data-backdrop className="absolute inset-0 bg-bg" />
 
       <div
@@ -149,10 +149,10 @@ export function Loader() {
       </div>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-20 text-h3 leading-[0.9] text-accent uppercase">
-        <div data-logo="top" className="-my-[0.1em] overflow-hidden py-[0.1em]">
+        <div data-logo="top" className="my-[-0.1em] overflow-hidden py-[0.1em]">
           <div data-logo-line>Jacob</div>
         </div>
-        <div data-logo="bottom" className="-my-[0.1em] overflow-hidden py-[0.1em]">
+        <div data-logo="bottom" className="my-[-0.1em] overflow-hidden py-[0.1em]">
           <div data-logo-line>Grønberg</div>
         </div>
       </div>
